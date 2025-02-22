@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 discordClient.once('ready', () => {
   console.log(`✅ Logged into Discord as ${discordClient.user.tag}`);
-  cron.schedule('*/3 * * * *', processOdds);
+  cron.schedule('*/15 * * * *', processOdds);
 });
 
 

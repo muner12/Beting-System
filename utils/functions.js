@@ -217,11 +217,17 @@ exports.processOdds=async()=>{
         .setColor("#ff5733") // 🔥 Set Embed color (use HEX codes)
         .setTitle(`🔥${betData.edgePercent}% Edge AI Bet!`)
         .setDescription(`${betData.icon} ${betData.event}`)
+        .setThumbnail("https://i.imgur.com/zM3T92Y.png")
+
         .addFields(
           { name: `💵 Bet: ${betData.betType}`, value: ` `, inline: false },
           { name: `📊 Odds: ${betData.odds}`, value: ` `, inline: false },
           { name: `🎯 Edge: ${betData.edgePercent}%`, value: ` `, inline: false }
-        )
+        ).setFooter({ 
+          text: `Powered by Primetime Sports Club🔹${new Date().toLocaleString()}`,
+          iconURL: "https://i.imgur.com/zM3T92Y.png"  // Replace with your Discord bot's icon URL
+  
+         });
     //.setFooter({ text: `🔹 ${betData.sportsbook} | 📅 ${new Date().toLocaleString()}` });
   
       let send_response=await channel.send({ embeds: [embed] });
