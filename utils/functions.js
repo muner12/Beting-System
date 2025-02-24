@@ -230,7 +230,7 @@ exports.processOdds=async()=>{
           text: `Powered by Primetime Sports Club`,
           iconURL: "https://i.imgur.com/zM3T92Y.png"  // Replace with your Discord bot's icon URL
   
-         }).setTimestamp();;
+         }).setTimestamp();
     //.setFooter({ text: `🔹 ${betData.sportsbook} | 📅 ${new Date().toLocaleString()}` });
   
       let send_response=await channel.send({ embeds: [embed] });
