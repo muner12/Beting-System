@@ -192,13 +192,16 @@ exports.processOdds=async()=>{
   // Send Messages to Discord (Correct Channel for Each Sportsbook)
   
   async function sendToDiscord(betData) {
+
     const { sport, sportsbook } = betData;
 
+    const timestamp = Math.floor(Date.now() / 1000);
 
     if (!sportsbookChannels[sport] || !sportsbookChannels[sport][sportsbook]) {
       console.error(`❌ No Discord channel found for ${sport} - ${sportsbook}`);
       return;
   }
+  
 
   const channelId = sportsbookChannels[sport][sportsbook];
 
@@ -224,10 +227,10 @@ exports.processOdds=async()=>{
           { name: `📊 Odds: ${betData.odds}`, value: ` `, inline: false },
           { name: `🎯 Edge: ${betData.edgePercent}%`, value: ` `, inline: false }
         ).setFooter({ 
-          text: `Powered by Primetime Sports Club🔹${new Date().toLocaleString()}`,
+          text: `Powered by Primetime Sports Club`,
           iconURL: "https://i.imgur.com/zM3T92Y.png"  // Replace with your Discord bot's icon URL
   
-         });
+         }).setTimestamp();;
     //.setFooter({ text: `🔹 ${betData.sportsbook} | 📅 ${new Date().toLocaleString()}` });
   
       let send_response=await channel.send({ embeds: [embed] });
