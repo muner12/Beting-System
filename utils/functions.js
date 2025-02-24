@@ -1,7 +1,6 @@
 const { EmbedBuilder, Client, GatewayIntentBits } = require("discord.js");
 require('dotenv').config();
 const axios = require('axios');
-const Bet = require("../models/bet_model");
 const { sportsbookChannels, sportIcons, allowed_sports } = require("../config");
 
 sportsbookChannels
