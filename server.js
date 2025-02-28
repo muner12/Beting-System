@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 
 discordClient.once('ready', () => {
   console.log(`✅ Logged into Discord as ${discordClient.user.tag}`);
-  cron.schedule('*/15 * * * *', processOdds);
+  cron.schedule('*/2 * * * *', processOdds);
 });
 
 

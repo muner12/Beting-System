@@ -39,7 +39,7 @@ function americanToDecimal(odds) {
     return {
       expectedValue: ev.toFixed(4),
       edgePercent: edgePercent.toFixed(2),
-      isPositiveEV: ev > 0,
+      isPositiveEV: ev.toFixed(2) > 0.11,
       odds:decimalOdds
     };
   }
@@ -149,7 +149,7 @@ exports.processOdds=async()=>{
                 if (market.key.includes("over")) probOver = impliedProb;
                 if (market.key.includes("under")) probUnder = impliedProb;
   
-                let trueProbability = impliedProb + 0.05;
+                let trueProbability = impliedProb + 0.03;
                 if (probOver !== null && probUnder !== null) {
                   const fairProbs = removeVig(probOver, probUnder);
                   trueProbability = market.key.includes("over") ? fairProbs.trueProbabilityOver : fairProbs.trueProbabilityUnder;
@@ -233,7 +233,7 @@ exports.processOdds=async()=>{
     //.setFooter({ text: `🔹 ${betData.sportsbook} | 📅 ${new Date().toLocaleString()}` });
   
       let send_response=await channel.send({ embeds: [embed] });
-      console.log("Message Send Successfully",send_response);
+      console.log("Message Send Successfully");
     } catch (error) {
       console.error(`❌ Error sending message to Discord channel for ${betData.sportsbook}:`, error);
     }
